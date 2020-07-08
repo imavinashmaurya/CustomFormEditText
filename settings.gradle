@@ -1,0 +1,3 @@
+include ':formEditTextView'
+include ':app'
+rootProject.name = "FormEditTextDemo"

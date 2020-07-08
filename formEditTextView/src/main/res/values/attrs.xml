@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="CustomFormEditText">
+        <!-- The height or (thickness) of the bar -->
+        <attr name="hint" format="string" />
+        <!-- TextAppearance of the hint in the collapsed floating label. -->
+        <attr format="reference" name="customHintTextStyle"/>
+    </declare-styleable>
+</resources>
