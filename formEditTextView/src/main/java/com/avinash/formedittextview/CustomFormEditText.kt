@@ -9,7 +9,9 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputLayout
 
-
+/**
+ * Custom view for edit text for forms
+ */
 class CustomFormEditText : ConstraintLayout {
 
     private var mRootView: View? = null
