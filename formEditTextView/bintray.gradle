@@ -1,0 +1,46 @@
+apply plugin: 'com.jfrog.bintray'
+
+version = '0.0.1' //YOUR LIBRARY VERSION
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set("sources")
+}
+
+task javadoc(type: Javadoc) {
+    excludes = ['**/*.kt'] // < ---- Exclude all kotlin files from javadoc file.
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier.set("javadoc")
+
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = 'CustomFormEditTextView' // YOUR REPOSITORY NAME FROM BINTRAY ACCOUNT
+        name = 'com.avinash.formedittextview' //YOUR PACKAGE NAME FROM BINTRAY ACCOUNT
+        desc = 'CustomFormEditTextView with form ui element and custom methods' // YOUR LIBRARY DESCRIPTION
+        websiteUrl = 'https://github.com/imavinashmaurya/CustomFormEditText' // YOUR SITE
+        vcsUrl = 'https://github.com/imavinashmaurya/CustomFormEditText.git' // YOUR GIT REPO
+        licenses = ["Apache-2.0"] // A LIST OF YOUR LICENCES
+        publish = true
+        publicDownloadNumbers = true
+    }
+}

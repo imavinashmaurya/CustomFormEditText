@@ -37,3 +37,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 }
+/*
+step2 and step3
+Add this file to library module
+step4
+add below line
+*/
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
+
+/*
+Step5
+Command
+.\gradlew install
+.\gradlew bintrayUpload*/

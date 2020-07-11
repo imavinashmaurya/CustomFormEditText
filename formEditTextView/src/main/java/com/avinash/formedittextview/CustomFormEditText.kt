@@ -9,9 +9,6 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputLayout
 
-/**
- * Custom view for edit text for forms
- */
 class CustomFormEditText : ConstraintLayout {
 
     private var mRootView: View? = null
@@ -92,11 +89,6 @@ class CustomFormEditText : ConstraintLayout {
         mTvError = mRootView?.findViewById(R.id.tvError)
     }
 
-    /**
-     * Sets the {@link android.text.InputType} bits of this node.
-     *
-     * @param inputType inputType bits as defined by {@link android.text.InputType}.
-     */
     fun setInputType(inputType: Int) {
         mInputTextEditText?.inputType = inputType
     }
