@@ -58,12 +58,25 @@ class CustomFormEditText : ConstraintLayout {
         if (hintAppearance != -1) {
             setHintStyle(hintAppearance)
         }
+
+        val hint = ta.getString(R.styleable.CustomFormEditText_hint)
+        if (hint != null) {
+            setHint(hint)
+        }
+
     }
 
     fun setHintStyle(hintAppearance: Int) {
         mInputTextLayout?.setHintTextAppearance(hintAppearance)
     }
 
+    fun getEditText(): EditText? {
+        return mInputTextEditText
+    }
+
+    fun getInputText(): TextInputLayout? {
+        return mInputTextLayout
+    }
 
     private fun initUI(context: Context) {
         mContext = context
@@ -79,8 +92,13 @@ class CustomFormEditText : ConstraintLayout {
         mTvError = mRootView?.findViewById(R.id.tvError)
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+    /**
+     * Sets the {@link android.text.InputType} bits of this node.
+     *
+     * @param inputType inputType bits as defined by {@link android.text.InputType}.
+     */
+    fun setInputType(inputType: Int) {
+        mInputTextEditText?.inputType = inputType
     }
 
     fun setError(error: String) {

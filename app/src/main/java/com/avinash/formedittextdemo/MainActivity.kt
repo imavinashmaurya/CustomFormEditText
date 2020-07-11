@@ -1,6 +1,7 @@
 package com.avinash.formedittextdemo
 
 import android.os.Bundle
+import android.text.InputType
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -10,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         etForm?.setHint("Hint123")
         etForm1?.setHint("Hint@123")
+        etForm?.setInputType(InputType.TYPE_CLASS_PHONE)
         etForm?.isEnabled = false
 
         btSuccess?.setOnClickListener {
